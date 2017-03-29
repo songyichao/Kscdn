@@ -1,6 +1,14 @@
 # Kscdn
 金山云图片扩展
 
+安装
+    
+    composer require songyichao/kscdn
+    
+基本的使用教程和官网的一直，只不过现在可以以composer的形式去安装管理了。
+
+具体函数的使用就看官网的介绍就好，
+
 官方的使用教程
 # KS3 SDK For PHP使用指南 
 ---

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="de533dc2-3aaf-4be2-88ef-c29f5f921d7a" name="Default" comment="" />
+    <list default="true" id="de533dc2-3aaf-4be2-88ef-c29f5f921d7a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,13 +56,18 @@
       <file leaf-file-name="Ks3Client.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Ks3Client.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5992">
-              <caret line="298" column="54" lean-forward="false" selection-start-line="298" selection-start-column="54" selection-end-line="298" selection-end-column="54" />
+            <state relative-caret-position="6058">
+              <caret line="301" column="54" lean-forward="false" selection-start-line="301" selection-start-column="54" selection-end-line="301" selection-end-column="54" />
               <folding>
                 <element signature="e#63#93#0#PHP" expanded="true" />
-                <element signature="e#1808#2253#0#PHP" expanded="true" />
-                <element signature="e#3330#4000#0#PHP" expanded="true" />
-                <element signature="e#13044#14254#0#PHP" expanded="true" />
+                <element signature="e#1735#14434#0#PHP" expanded="true" />
+                <element signature="e#13222#14432#0#PHP" expanded="true" />
+                <marker date="1490788566000" expanded="true" signature="12909:13012" ph="..." />
+                <marker date="1490788566000" expanded="true" signature="12909:13049" ph="..." />
+                <marker date="1490788566000" expanded="true" signature="12909:13195" ph="{...}" />
+                <marker date="1490788566000" expanded="true" signature="13057:13188" ph="..." />
+                <marker date="1490788566000" expanded="true" signature="13591:13757" ph="..." />
+                <marker date="1490788566000" expanded="true" signature="13818:14047" ph="..." />
               </folding>
             </state>
           </provider>
@@ -87,12 +94,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="426">
-                <caret line="31" column="18" lean-forward="false" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+              <first_editor relative-caret-position="198">
+                <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -110,7 +117,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="readme 2.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="readme 2.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/readme 2.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
@@ -231,9 +238,9 @@
         <option value="$PROJECT_DIR$/Ks3Client.class.php" />
         <option value="$PROJECT_DIR$/Ks3EncryptionClient.class.php" />
         <option value="$PROJECT_DIR$/test.php" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/readme 2.md" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -462,12 +469,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1490759960453</updated>
-      <workItem from="1490759962331" duration="9644000" />
+      <workItem from="1490759962331" duration="10081000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9644000" />
+    <option name="totallyTimeSpent" value="10081000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="0" width="1920" height="1080" extended-state="0" />
@@ -606,9 +613,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="45" lean-forward="false" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
-          <folding>
-            <element signature="e#131#168#0#PHP" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -616,9 +621,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="635">
           <caret line="64" column="45" lean-forward="false" selection-start-line="64" selection-start-column="45" selection-end-line="64" selection-end-column="45" />
-          <folding>
-            <element signature="e#131#168#0#PHP" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -826,31 +829,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="671">
           <caret line="914" column="39" lean-forward="true" selection-start-line="914" selection-start-column="39" selection-end-line="914" selection-end-column="39" />
-          <folding>
-            <element signature="e#6544#6724#0#PHP" expanded="false" />
-            <element signature="e#6992#7107#0#PHP" expanded="false" />
-            <element signature="e#7312#7413#0#PHP" expanded="false" />
-            <element signature="e#7644#7747#0#PHP" expanded="false" />
-            <element signature="e#7946#8053#0#PHP" expanded="false" />
-            <element signature="e#8512#8623#0#PHP" expanded="false" />
-            <element signature="e#8870#8989#0#PHP" expanded="false" />
-            <element signature="e#9467#9965#0#PHP" expanded="false" />
-            <element signature="e#10184#10384#0#PHP" expanded="false" />
-            <element signature="e#10610#10729#0#PHP" expanded="false" />
-            <element signature="e#10949#11154#0#PHP" expanded="false" />
-            <element signature="e#11431#11782#0#PHP" expanded="false" />
-            <element signature="e#12015#12171#0#PHP" expanded="false" />
-            <element signature="e#13348#13505#0#PHP" expanded="false" />
-            <element signature="e#14524#14683#0#PHP" expanded="false" />
-            <element signature="e#15211#16496#0#PHP" expanded="false" />
-            <element signature="e#16785#17462#0#PHP" expanded="false" />
-            <element signature="e#17676#23063#0#PHP" expanded="false" />
-            <element signature="e#25839#26466#0#PHP" expanded="false" />
-            <element signature="e#27387#30385#0#PHP" expanded="false" />
-            <element signature="e#30755#30957#0#PHP" expanded="false" />
-            <element signature="e#31079#31163#0#PHP" expanded="false" />
-            <element signature="e#31290#31374#0#PHP" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1037,13 +1016,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Ks3Client.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5992">
-          <caret line="298" column="54" lean-forward="false" selection-start-line="298" selection-start-column="54" selection-end-line="298" selection-end-column="54" />
+        <state relative-caret-position="6058">
+          <caret line="301" column="54" lean-forward="false" selection-start-line="301" selection-start-column="54" selection-end-line="301" selection-end-column="54" />
           <folding>
             <element signature="e#63#93#0#PHP" expanded="true" />
-            <element signature="e#1808#2253#0#PHP" expanded="true" />
-            <element signature="e#3330#4000#0#PHP" expanded="true" />
-            <element signature="e#13044#14254#0#PHP" expanded="true" />
+            <element signature="e#1735#14434#0#PHP" expanded="true" />
+            <element signature="e#13222#14432#0#PHP" expanded="true" />
+            <marker date="1490788566000" expanded="true" signature="12909:13012" ph="..." />
+            <marker date="1490788566000" expanded="true" signature="12909:13049" ph="..." />
+            <marker date="1490788566000" expanded="true" signature="12909:13195" ph="{...}" />
+            <marker date="1490788566000" expanded="true" signature="13057:13188" ph="..." />
+            <marker date="1490788566000" expanded="true" signature="13591:13757" ph="..." />
+            <marker date="1490788566000" expanded="true" signature="13818:14047" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1056,22 +1040,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
+    <entry file="file://$PROJECT_DIR$/readme 2.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="426">
-            <caret line="31" column="18" lean-forward="false" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+          <first_editor relative-caret-position="198">
+            <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
             <folding />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/readme 2.md">
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="198">
-            <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
             <folding />
           </first_editor>
           <second_editor />
