@@ -1,0 +1,275 @@
+<?php
+
+namespace Songyichao\Kscnd\Core;
+/*
+redirect:跳转至对应的API，即别名
+method：HTTP Method
+needBucket:是否需要bucket
+needObject：是否需要object
+signer：请求构造链
+handler：结果处理链
+*/
+class API
+{
+    public static $API = [
+        "getService" => [
+            "redirect" => "listBuckets",
+        ],
+        "listBuckets" => [
+            "method" => "GET",
+            "needBucket" => FALSE,
+            "needObject" => FALSE,
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->HeaderAuthSigner",
+            "handler" => "ErrorResponseHandler->ListBucketsHandler",
+        ],
+        "deleteBucket" => [
+            "method" => "DELETE",
+            "needBucket" => TRUE,
+            "needObject" => FALSE,
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->HeaderAuthSigner",
+            "handler" => "ErrorResponseHandler->BooleanHandler",
+        ],
+        "deleteBucketCORS" => [
+            "method" => "DELETE",
+            "needBucket" => TRUE,
+            "needObject" => FALSE,
+            "subResource" => "cors",
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->HeaderAuthSigner",
+            "handler" => "ErrorResponseHandler->BooleanHandler",
+        ],
+        "createBucket" => [
+            "method" => "PUT",
+            "needBucket" => TRUE,
+            "needObject" => FALSE,
+            "signer" => "DefaultUserAgentSigner->ACLSigner->DefaultContentTypeSigner->HeaderAuthSigner",
+            "body" => ["builder" => "LocationBuilder"],
+            "handler" => "ErrorResponseHandler->BooleanHandler",
+        ],
+        "setBucketAcl" => [
+            "method" => "PUT",
+            "needBucket" => TRUE,
+            "needObject" => FALSE,
+            "signer" => "DefaultUserAgentSigner->ACLSigner->DefaultContentTypeSigner->HeaderAuthSigner",
+            "subResource" => "acl",
+            "handler" => "ErrorResponseHandler->BooleanHandler",
+        ],
+        "setBucketCORS" => [
+            "method" => "PUT",
+            "needBucket" => TRUE,
+            "needObject" => FALSE,
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->ContentMD5Signer->HeaderAuthSigner",
+            "subResource" => "cors",
+            "body" => ["builder" => "CORSBuilder"],
+            "handler" => "ErrorResponseHandler->BooleanHandler",
+        ],
+        "setBucketLogging" => [
+            "method" => "PUT",
+            "needBucket" => TRUE,
+            "needObject" => FALSE,
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->HeaderAuthSigner",
+            "subResource" => "logging",
+            "body" => ["builder" => "BucketLoggingBuilder"],
+            "handler" => "ErrorResponseHandler->BooleanHandler",
+        ],
+        "listObjects" => [
+            "method" => "GET",
+            "needBucket" => TRUE,
+            "needObject" => FALSE,
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->HeaderAuthSigner",
+            "queryParams" => ["Options->prefix", "Options->delimiter", "Options->marker", "Options->max-keys"],
+            "handler" => "ErrorResponseHandler->ListObjectsHandler",
+        ],
+        "getBucketAcl" => [
+            "method" => "GET",
+            "needBucket" => TRUE,
+            "needObject" => FALSE,
+            "subResource" => "acl",
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->HeaderAuthSigner",
+            "handler" => "ErrorResponseHandler->GetAclHandler",
+        ],
+        "getBucketCORS" => [
+            "method" => "GET",
+            "needBucket" => TRUE,
+            "needObject" => FALSE,
+            "subResource" => "cors",
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->HeaderAuthSigner",
+            "handler" => "ErrorResponseHandler->GetBucketCORSHandler",
+        ],
+        "getBucketLocation" => [
+            "method" => "GET",
+            "needBucket" => TRUE,
+            "needObject" => FALSE,
+            "subResource" => "location",
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->HeaderAuthSigner",
+            "handler" => "ErrorResponseHandler->GetBucketLocationHandler",
+        ],
+        "getBucketLogging" => [
+            "method" => "GET",
+            "needBucket" => TRUE,
+            "needObject" => FALSE,
+            "subResource" => "logging",
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->HeaderAuthSigner",
+            "handler" => "ErrorResponseHandler->GetBucketLoggingHandler",
+        ],
+        "listMutipartUploads" => [
+            "method" => "GET",
+            "needBucket" => TRUE,
+            "needObject" => FALSE,
+            "subResource" => "uploads",
+            "queryParams" => ["Options->max-uploads", "Options->key-marker", "Options->prefix", "Options->upload-id-​marker", "Options->delimiter"],
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->HeaderAuthSigner",
+            "handler" => "ErrorResponseHandler->ListMutipartUploadsHandler",
+        ],
+        "bucketExists" => [
+            "method" => "HEAD",
+            "needBucket" => TRUE,
+            "needObject" => FALSE,
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->HeaderAuthSigner",
+            "handler" => "ExistsHandler",
+        ],
+        "putObjectByContent" => [
+            "method" => "PUT",
+            "needBucket" => TRUE,
+            "needObject" => TRUE,
+            //将ContentMD5Signer放在最后的原因是，ContentMD5需要根据Content-Length计算
+            "signer" => "DefaultUserAgentSigner->ACLSigner->SuffixContentTypeSigner->ContentLengthSigner->ObjectMetaSigner->ContentMD5Signer->UserMetaSigner->AdpSigner->CallBackSigner->SSESigner->SSECSigner->HeaderAuthSigner",
+            "handler" => "ErrorResponseHandler->UploadHandler",
+            "body" => ["position" => "Content"],
+        ],
+        "putObjectByFile" => [
+            "method" => "PUT",
+            "needBucket" => TRUE,
+            "needObject" => TRUE,
+            "signer" => "DefaultUserAgentSigner->ACLSigner->SuffixContentTypeSigner->ObjectMetaSigner->UserMetaSigner->AdpSigner->CallBackSigner->SSESigner->SSECSigner->StreamUploadSigner->HeaderAuthSigner",
+            "handler" => "ErrorResponseHandler->UploadHandler",
+        ],
+        "setObjectAcl" => [
+            "method" => "PUT",
+            "needBucket" => TRUE,
+            "needObject" => TRUE,
+            "signer" => "DefaultUserAgentSigner->ACLSigner->DefaultContentTypeSigner->HeaderAuthSigner",
+            "subResource" => "acl",
+            "handler" => "ErrorResponseHandler->BooleanHandler",
+        ],
+        "copyObject" => [
+            "method" => "PUT",
+            "needBucket" => TRUE,
+            "needObject" => TRUE,
+            "signer" => "DefaultUserAgentSigner->CopySourceSigner->DefaultContentTypeSigner->SSESigner->SSECSigner->SSECSourceSigner->HeaderAuthSigner",
+            "handler" => "ErrorResponseHandler->CopyHandler",
+        ],
+        "getObjectMeta" => [
+            "method" => "HEAD",
+            "needBucket" => TRUE,
+            "needObject" => TRUE,
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->SSECSigner->HeaderAuthSigner",
+            "handler" => "ErrorResponseHandler->ObjectMetaHandler",
+        ],
+        "objectExists" => [
+            "method" => "HEAD",
+            "needBucket" => TRUE,
+            "needObject" => TRUE,
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->SSECSigner->HeaderAuthSigner",
+            "handler" => "ExistsHandler",
+        ],
+        "deleteObject" => [
+            "method" => "DELETE",
+            "needBucket" => TRUE,
+            "needObject" => TRUE,
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->HeaderAuthSigner",
+            "handler" => "ErrorResponseHandler->BooleanHandler",
+        ],
+        "deleteObjects" => [
+            "method" => "POST",
+            "needBucket" => TRUE,
+            "needObject" => FALSE,
+            "subResource" => "delete",
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->ContentMD5Signer->ContentLengthSigner->HeaderAuthSigner",
+            "body" => ["builder" => "DeleteObjectsBuilder"],
+            "handler" => "ErrorResponseHandler->BooleanHandler",
+        ],
+        "getObject" => [
+            "method" => "GET",
+            "needBucket" => TRUE,
+            "needObject" => TRUE,
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->RangeSigner->SSECSigner->GetObjectSigner->HeaderAuthSigner",
+            "handler" => "ErrorResponseHandler->getObjectHandler",
+        ],
+        "getObjectAcl" => [
+            "method" => "GET",
+            "needBucket" => TRUE,
+            "needObject" => TRUE,
+            "subResource" => "acl",
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->HeaderAuthSigner",
+            "handler" => "ErrorResponseHandler->GetAclHandler",
+        ],
+        "initMultipartUpload" => [
+            "method" => "POST",
+            "needBucket" => TRUE,
+            "needObject" => TRUE,
+            "subResource" => "uploads",
+            "signer" => "DefaultUserAgentSigner->ACLSigner->SuffixContentTypeSigner->MultipartObjectMetaSigner->UserMetaSigner->SSESigner->SSECSigner->HeaderAuthSigner",
+            "handler" => "ErrorResponseHandler->InitMultipartUploadHandler",
+        ],
+        "uploadPart" => [
+            "method" => "PUT",
+            "needBucket" => TRUE,
+            "needObject" => TRUE,
+            "queryParams" => ["!Options->uploadId", "!Options->partNumber"],
+            //这个请求没有body，所以使用了ContentLengthSigner->ContentMD5Signer而没用ObjectMetaSigner
+            "signer" => "DefaultUserAgentSigner->ACLSigner->StreamContentTypeSigner->ContentLengthSigner->ContentMD5Signer->SSECSigner->StreamUploadSigner->HeaderAuthSigner",
+            "handler" => "ErrorResponseHandler->UploadHandler",
+        ],
+        "abortMultipartUpload" => [
+            "method" => "DELETE",
+            "needBucket" => TRUE,
+            "needObject" => TRUE,
+            "queryParams" => ["!Options->uploadId"],
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->HeaderAuthSigner",
+            "handler" => "ErrorResponseHandler->BooleanHandler",
+        ],
+        "listParts" => [
+            "method" => "GET",
+            "needBucket" => TRUE,
+            "needObject" => TRUE,
+            "queryParams" => ["!Options->uploadId", "Options->max-parts", "Options->part-number​-marker"],
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->HeaderAuthSigner",
+            "handler" => "ErrorResponseHandler->ListPartsHandler",
+        ],
+        "completeMultipartUpload" => [
+            "method" => "POST",
+            "needBucket" => TRUE,
+            "needObject" => TRUE,
+            "queryParams" => ["!Options->uploadId"],
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->ContentLengthSigner->AdpSigner->CallBackSigner->HeaderAuthSigner",
+            "handler" => "ErrorResponseHandler->UploadHandler",
+            "body" => ["builder" => "CompleteMultipartUploadBuilder"],
+        ],
+        "generatePresignedUrl" => [
+            "method" => "Method",
+            "needBucket" => FALSE,
+            "needObject" => FALSE,
+            "queryParams" => ["!Options->Expires", "Options->*"],
+            "signer" => "AllHeaderSigner->QueryAuthSigner",
+        ],
+        "putAdp" => [
+            "method" => "PUT",
+            "needBucket" => TRUE,
+            "needObject" => TRUE,
+            "subResource" => "adp",
+            "signer" => "DefaultUserAgentSigner->DefaultContentTypeSigner->AdpSigner->HeaderAuthSigner",
+            "handler" => "ErrorResponseHandler->UploadHandler",
+        ],
+        "getAdp" => [
+            "method" => "GET",
+            "needBucket" => FALSE,
+            "needObject" => TRUE,
+            "objectPostion" => "TaskID",//专门为这个接口定义的属性
+            "subResource" => "queryadp",
+            "signer" => "DefaultUserAgentSigner",
+            "handler" => "ErrorResponseHandler->AdpHandler",
+        ],
+    ];
+}
+
+?>
