@@ -1,5 +1,5 @@
 {
-    "name": "Songyichao/Kscdn",
+    "name": "songyichao/kscdn",
     "description": "the ks3cdn plugin for the php",
     "keywords": ["php", "kscdn"],
     "type": "ks3cdn-extension",
