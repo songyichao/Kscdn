@@ -8,9 +8,13 @@
 
 namespace Songyichao\Kscnd\Core\Handler;
 
+use Songyichao\Kscnd\Lib\ResponseCore;
 
-class AdpHandler implements Handler{
-    public function handle(\ResponseCore $response){
+
+class AdpHandler implements Handler
+{
+    public function handle(ResponseCore $response)
+    {
         return $response->body;
     }
 }

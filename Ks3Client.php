@@ -11,6 +11,7 @@ use Songyichao\Kscnd\Core\MessageHolder;
 use Songyichao\Kscnd\Core\Signer\QueryAuthSigner;
 use Songyichao\Kscnd\Core\Utils;
 use Songyichao\Kscnd\Exceptions\Ks3ClientException;
+use Songyichao\Kscnd\Lib\RequestCore;
 use Songyichao\Kscnd\Lib\ResponseCore;
 
 date_default_timezone_set('Asia/Shanghai');
@@ -26,7 +27,7 @@ if (!defined("KS3_API_LOG"))
     define("KS3_API_LOG", TRUE);
 //是否显示日志(直接输出日志)
 if (!defined("KS3_API_DISPLAY_LOG"))
-    define("KS3_API_DISPLAY_LOG", TRUE);
+    define("KS3_API_DISPLAY_LOG", FALSE);
 //定义日志目录(默认是该项目log下)
 if (!defined("KS3_API_LOG_PATH"))
     define("KS3_API_LOG_PATH", "");
@@ -69,6 +70,7 @@ class Ks3Client
     {
         $this->accessKey = $accessKey;
         $this->secretKey = $secretKey;
+
 
         if (empty($endpoint)) {
             throw new Ks3ClientException("must set endpoint, please see http://ks3.ksyun.com/doc/api/index.html Region part");
@@ -267,6 +269,7 @@ class Ks3Client
         if (isset($api["signer"])) {
             $signers = explode("->", $api["signer"]);
             foreach ($signers as $key => $value) {
+                $value = 'Songyichao\Kscnd\Core\Signer\\' . $value;
                 $signer = new $value();
                 $log = $signer->sign($request, ["accessKey" => $this->accessKey, "secretKey" => $this->secretKey, "args" => $args]);
                 if (!empty($log)) {
@@ -335,7 +338,9 @@ class Ks3Client
             $holder->msg .= "response headers->" . serialize($httpRequest->get_response_header()) . "\r\n";
             $holder->msg .= "response body->" . $body . "\r\n";
             $handlers = explode("->", $api["handler"]);
+
             foreach ($handlers as $key => $value) {
+                $value = 'Songyichao\Kscnd\Core\Handler\\' . $value;
                 $handler = new $value();
                 $data = $handler->handle($data);
             }

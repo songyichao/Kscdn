@@ -8,20 +8,24 @@
 
 namespace Songyichao\Kscnd\Core\Handler;
 
+use Songyichao\Kscnd\Lib\ResponseCore;
 
 
-class ListBucketsHandler implements Handler {
+class ListBucketsHandler implements Handler
+{
 
-    public function handle(\ResponseCore $response){
-        $result = array();
+    public function handle(ResponseCore $response)
+    {
+        $result = [];
         $xml = new \SimpleXMLElement($response->body);
         foreach ($xml->Buckets->Bucket as $bucketXml) {
-            $bucket = array();
+            $bucket = [];
             foreach ($bucketXml->children() as $key => $value) {
-                $bucket[$key]=$value->__toString();
+                $bucket[$key] = $value->__toString();
             }
             array_push($result, $bucket);
         }
+
         return $result;
     }
 }

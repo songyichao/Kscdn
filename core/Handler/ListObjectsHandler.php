@@ -8,10 +8,11 @@
 
 namespace Songyichao\Kscnd\Core\Handler;
 
+use Songyichao\Kscnd\Lib\ResponseCore;
 
 class ListObjectsHandler implements Handler
 {
-    public function handle(\ResponseCore $response)
+    public function handle(ResponseCore $response)
     {
         $result = [];
         $xml = new \SimpleXMLElement($response->body);

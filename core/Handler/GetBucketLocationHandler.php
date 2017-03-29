@@ -8,14 +8,17 @@
 
 namespace Songyichao\Kscnd\Core\Handler;
 
+use Songyichao\Kscnd\Lib\ResponseCore;
 
 
-class GetBucketLocationHandler implements Handler {
+class GetBucketLocationHandler implements Handler
+{
     /**
      * @param \ResponseCore $response
      * @return string
      */
-    public function handle(\ResponseCore $response){
+    public function handle(ResponseCore $response)
+    {
         $xml = new \SimpleXMLElement($response->body);
         $location = $xml->__toString();
 

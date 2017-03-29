@@ -8,10 +8,12 @@
 
 namespace Songyichao\Kscnd\Core\Handler;
 
+use Songyichao\Kscnd\Lib\ResponseCore;
+
 
 class GetBucketLoggingHandler implements Handler
 {
-    public function handle(\ResponseCore $response)
+    public function handle(ResponseCore $response)
     {
         $logging = [];
         $xml = new \SimpleXMLElement($response->body);

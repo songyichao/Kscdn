@@ -8,10 +8,12 @@
 
 namespace Songyichao\Kscnd\Core\Handler;
 
+use Songyichao\Kscnd\Config\Consts;
+use Songyichao\Kscnd\Lib\ResponseCore;
 
 class UploadHandler implements Handler
 {
-    public function handle(\ResponseCore $response)
+    public function handle(ResponseCore $response)
     {
         $Headers = [];
         foreach ($response->header as $key => $value) {

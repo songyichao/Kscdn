@@ -8,11 +8,14 @@
 
 namespace Songyichao\Kscnd\Core\Handler;
 
+use Songyichao\Kscnd\Lib\ResponseCore;
 
-interface Handler{
+
+interface Handler
+{
     /**
      * @param \ResponseCore $response
      * @return mixed
      */
-    public function handle(\ResponseCore $response);
+    public function handle(ResponseCore $response);
 }

@@ -8,10 +8,11 @@
 
 namespace Songyichao\Kscnd\Core\Handler;
 
+use Songyichao\Kscnd\Lib\ResponseCore;
 
 class BooleanHandler implements Handler
 {
-    public function handle(\ResponseCore $response)
+    public function handle(ResponseCore $response)
     {
         if ($response->isOk()) {
             return TRUE;

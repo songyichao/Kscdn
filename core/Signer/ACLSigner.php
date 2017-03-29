@@ -9,6 +9,8 @@
 namespace Songyichao\Kscnd\Core\Signer;
 
 
+use Songyichao\Kscnd\Config\Consts;
+use Songyichao\Kscnd\Core\Headers;
 use Songyichao\Kscnd\Core\Ks3Request;
 use Songyichao\Kscnd\Exceptions\Ks3ClientException;
 

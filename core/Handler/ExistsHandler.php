@@ -8,9 +8,10 @@
 
 namespace Songyichao\Kscnd\Core\Handler;
 
+use Songyichao\Kscnd\Lib\ResponseCore;
 
 class ExistsHandler implements Handler{
-    public function handle(\ResponseCore $response){
+    public function handle(ResponseCore $response){
         $status = $response->status;
         if($status === 404){
             return FALSE;

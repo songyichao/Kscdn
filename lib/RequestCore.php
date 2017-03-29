@@ -1,12 +1,9 @@
 <?php
 
 namespace Songyichao\Kscnd\Lib;
-/**
- * Created by PhpStorm.
- * User: MIOJI
- * Date: 2017/3/29
- * Time: 下午2:55
- */
+
+use Songyichao\Kscnd\Lib\ResponseCore;
+
 class RequestCore
 {
     /**
@@ -265,6 +262,7 @@ class RequestCore
      */
     public function add_header($key, $value)
     {
+
         $this->request_headers[$key] = $value;
 
         return $this;
@@ -759,7 +757,7 @@ class RequestCore
             $this->response_headers['_info']['method'] = $this->method;
 
             if ($curl_handle && $response) {
-                return new $this->response_class($this->response_headers, $this->response_body, $this->response_code, $this->curl_handle);
+                return new ResponseCore($this->response_headers, $this->response_body, $this->response_code, $this->curl_handle);
             }
         }
 

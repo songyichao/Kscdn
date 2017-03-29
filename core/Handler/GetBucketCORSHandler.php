@@ -8,10 +8,11 @@
 
 namespace Songyichao\Kscnd\Core\Handler;
 
+use Songyichao\Kscnd\Lib\ResponseCore;
 
 
 class GetBucketCORSHandler implements Handler {
-    public function handle(\ResponseCore $response){
+    public function handle(ResponseCore $response){
         $xml = new  \SimpleXMLElement($response->body);
         $cors = array();
         foreach ($xml->CORSRule as $rule) {

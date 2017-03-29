@@ -3,6 +3,7 @@
 namespace Songyichao\Kscnd\Core\Handler;
 
 use Songyichao\Kscnd\Exceptions\Ks3ServiceException;
+use Songyichao\Kscnd\Lib\ResponseCore;
 
 /**
  * Created by PhpStorm.
@@ -16,7 +17,7 @@ class ErrorResponseHandler implements Handler
      * @param \ResponseCore $response
      * @return \ResponseCore
      */
-    public function handle(\ResponseCore $response)
+    public function handle(ResponseCore $response)
     {
         $code = $response->status;
         if ($code >= 400) {

@@ -8,10 +8,12 @@
 
 namespace Songyichao\Kscnd\Core\Handler;
 
+use Songyichao\Kscnd\Lib\ResponseCore;
+
 
 class ListMutipartUploadsHandler implements Handler
 {
-    public function handle(\ResponseCore $response)
+    public function handle(ResponseCore $response)
     {
         $mutiUploads = [];
         $xml = new \SimpleXMLElement($response->body);
